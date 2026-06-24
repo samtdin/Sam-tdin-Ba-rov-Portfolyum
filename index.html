@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samətdin Bağırov | Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-gradient: linear-gradient(135deg, #e0f2fe 0%, #ffffff 100%);
+            --primary-color: #0284c7;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(255, 255, 255, 0.5);
+            --shadow: 0 8px 32px 0 rgba(14, 116, 144, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Navigasiya */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+        }
+
+        .nav-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: var(--primary-color);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-main);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Ümumi Konteyner strukturu */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem 2rem;
+        }
+
+        section {
+            padding: 4rem 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 50%;
+            height: 4px;
+            background: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* Hero Bölməsi */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 4rem;
+            min-height: 80vh;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 320px;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 24px;
+            box-shadow: var(--shadow);
+            border: 4px solid #fff;
+            transition: transform 0.5s ease;
+        }
+
+        .profile-img:hover {
+            transform: translateY(-10px);
+        }
+
+        /* Kart strukturu (Glassmorphism) */
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        /* Fəaliyyətlər və Təşkilatlar */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .activity-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .activity-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Dillər və Maraqlar */
+        .badge-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .badge {
+            background: #f0fdf4;
+            color: #166534;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            border: 1px solid #bbf7d0;
+        }
+
+        .badge.lang {
+            background: #f0f9ff;
+            color: #0369a1;
+            border: 1px solid #bae6fd;
+        }
+
+        .badge.tech {
+            background: #faf5ff;
+            color: #6b21a8;
+            border: 1px solid #e9d5ff;
+        }
+
+        /* Sosial Linklər və Düymələr */
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .social-icon {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icon:hover {
+            color: var(--primary-color);
+            transform: scale(1.1);
+        }
+
+        /* Media Queries (Mobil uyğunluq) */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 2rem;
+            }
+            .hero-img-container {
+                margin-top: 2rem;
+            }
+            .profile-img {
+                width: 260px;
+                height: 325px;
+            }
+            .nav-links {
+                display: none; /* Sadəlik üçün mobildə menyunu gizlədirik */
+            }
+            .section-title::after {
+                left: 25%;
+                width: 50%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Samətdin Bağırov</div>
+            <ul class="nav-links">
+                <li><a href="#haqqimda">Haqqımda</a></li>
+                <li><a href="#fəaliyyət">Fəaliyyət</a></li>
+                <li><a href="#bacariqlar">Biliklər və Maraqlar</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        
+        <section id="haqqimda" class="hero">
+            <div class="hero-content">
+                <h1>Salam, Mən <span>Samətdin Bağırov</span></h1>
+                <p class="hero-subtitle">171 nömrəli tam orta məktəbin şagirdi | İctimai Fəal</p>
+                <p>Yüksək səviyyədə biliklərə və liderlik keyfiyyətlərinə malik, texnologiya, dəqiq elmlər və uşaq hüquqlarının müdafiəsi sahəsində aktiv fəaliyyət göstərən bir gəncəm.</p>
+                
+                <div class="social-links">
+                    <a href="https://linkedin.com/in/samətdin-bağırov" target="_blank" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://instagram.com/sametdin_baghirov" target="_blank" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="hero-img-container">
+                <img src="profile.jpeg" alt="Samətdin Bağırov" class="profile-img">
+            </div>
+        </section>
+
+        <section id="fəaliyyət">
+            <h2 class="section-title">İctimai Fəaliyyət və Uğurlar</h2>
+            <div class="grid-2">
+                <div class="glass-card">
+                    <h3><i class="fas fa-users-line" style="color: var(--primary-color); margin-right: 0.5rem;"></i> Təşkilatlar</h3>
+                    <br>
+                    <div class="activity-item">
+                        <i class="fas fa-circle-check"></i>
+                        <div>
+                            <strong>"Narahat Ürəklər" Təşkilatı</strong>
+                            <p>Məktəb daxilində fəaliyyət göstərən təşkilatın sədri</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-circle-check"></i>
+                        <div>
+                            <strong>Uşaq Səfirlər Məclisi (USM)</strong>
+                            <p>Məktəb nümayəndəsi</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-circle-check"></i>
+                        <div>
+                            <strong>AUİP İctimai Birliyi</strong>
+                            <p>Azərbaycan Uşaqlarının İnkişaf Platformasının aktiv üzvü</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <h3><i class="fas fa-trophy" style="color: #eab308; margin-right: 0.5rem;"></i> Olimpiada və Yarışlar</h3>
+                    <br>
+                    <div class="activity-item">
+                        <i class="fas fa-award" style="color: #eab308;"></i>
+                        <div>
+                            <strong>ADA University</strong>
+                            <p>İngilis dili olimpiadası iştirakçısı</p>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <i class="fas fa-award" style="color: #eab208;"></i>
+                        <div>
+                            <strong>RFO (Respublika Fənn Olimpiadası)</strong>
+                            <p>Riyaziyyat fənni üzrə iştirak</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="bacariqlar" class="grid-2">
+            <div class="glass-card">
+                <h3>Dil Bilikləri</h3>
+                <div class="badge-container">
+                    <span class="badge lang">Azərbaycan dili (Ana dili)</span>
+                    <span class="badge lang">Türk dili (C1)</span>
+                    <span class="badge lang">İngilis dili (B1-B2)</span>
+                    <span class="badge lang">Rus dili (A2)</span>
+                    <span class="badge lang">Alman dili (A1)</span>
+                </div>
+                
+                <br>
+                <h3>Texnoloji Bacarıqlar</h3>
+                <div class="badge-container">
+                    <span class="badge tech">HTML5</span>
+                    <span class="badge tech">CSS3</span>
+                    <span class="badge tech">JavaScript (ES6+)</span>
+                </div>
+            </div>
+
+            <div class="glass-card">
+                <h3>Maraq Dairələri</h3>
+                <p>Elmi və akademik olaraq daim özümü inkişaf etdirdiyim və araşdırmalar apardığım sahələr:</p>
+                <div class="badge-container" style="margin-top: 1.5rem;">
+                    <span class="badge" style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;"><i class="fas fa-atom"></i> Fizika</span>
+                    <span class="badge" style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;"><i class="fas fa-calculator"></i> Riyaziyyat</span>
+                    <span class="badge" style="background: #fff7ed; color: #c2410c; border: 1px solid #ffedd5;"><i class="fas fa-laptop-code"></i> İnformatika</span>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        // Gələcəkdə portfoliona dinamik effektlər (məsələn, scroll animasiyaları) əlavə etmək üçün bu sahədən istifadə edə bilərsən.
+        console.log("Samətdin Bağırov - Portfolio uğurla yükləndi.");
+    </script>
+</body>
+</html>
